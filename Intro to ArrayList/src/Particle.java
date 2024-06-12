@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Particle {
+public class Particle{
 	//add properties
 	private int x,y;
 	private int vx, vy;
@@ -9,7 +9,8 @@ public class Particle {
 	private Color c;
 	private int status = 1; //healthy: 1, unhealthy: -1, recovered: 0
 	
-	private long recoveryTime = 5000;
+	private long recoveryTime = 10000;
+	private long destructTime = 10000;
 	//add non-default constructor
 	public Particle(int x, int y) {
 		this();
@@ -55,17 +56,23 @@ public class Particle {
 				this.status = -2;
 			}
 			if (this.status == 0 && other.status == 0) {
-				//
+				this.status=1;
+				other.status=1;
 			}
 		}
 	}
+	private void setStatus(int i) {
+		// TODO Auto-generated method stub
+		this.status=i;
+	}
+
 	public Particle() {
 		//randomize position
 		x = (int)(Math.random()*800);
 		y = (int)(Math.random()*550);
 		
 		c = Color.green;
-		width = 10;
+		width = 5;
 		
 		//[-4 to 4] not including 0
 		vx = (int)(Math.random()*9)-4;
@@ -96,6 +103,10 @@ public class Particle {
 			break;
 		case -2:
 			g.setColor(Color.black);
+			destructTime-=10;
+			if (destructTime <0) {
+				g.setColor(Color.white);
+			}
 			vx = 0;
 			vy = 0;
 			break;
@@ -107,11 +118,16 @@ public class Particle {
 		//update position
 		x += vx;
 		y += vy;
-		if (x<0 || x>750) {
+		if (x<0 || x>770) {
 			vx*=-1;
 		}
 		if (y<0|| y>550) {
 			vy*=-1;
 		}
+	}
+
+	public int getStatus() {
+		// TODO Auto-generated method stub
+		return status;
 	}
 }

@@ -19,6 +19,7 @@ public class Runner extends JPanel implements ActionListener, MouseMotionListene
 	Particle[] p1 = new Particle[1];
 	ArrayList<Particle> particles = new ArrayList<Particle>();
 	public void paint(Graphics g) {
+		this.setBackground(Color.yellow);
 		int numInfected = 0;
 		int numHealthy = 0;
 		int numRecovered = 0;
@@ -76,7 +77,6 @@ public class Runner extends JPanel implements ActionListener, MouseMotionListene
 	public Runner() {
 		JFrame f = new JFrame("ArrayList");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setBackground(Color.white);
 		f.setSize(800,600);
 		f.add(this);
 		f.addMouseMotionListener(this);

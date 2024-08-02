@@ -105,7 +105,7 @@ public class Particle{
 			g.setColor(Color.black);
 			destructTime-=10;
 			if (destructTime <0) {
-				g.setColor(Color.white);
+				g.setColor(Color.yellow);
 			}
 			vx = 0;
 			vy = 0;
